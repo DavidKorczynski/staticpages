@@ -1,0 +1,709 @@
+<html>
+<head>
+	<style>
+		body {
+			background: #EBEDEE;
+			font-family: "Roboto", sans-serif;
+			margin: 0px;
+		}
+		.main-div {
+			padding: 20px;			
+		}
+		.table-wrapper {
+			background: white;
+			height: calc(100% - 190px);
+			padding: 40px
+		}
+		.top-navbar {
+			height: 70px;
+			background:  #222;
+			display: flex;
+			position: relative;
+			color: white;
+			align-items: center;
+			/*justify-content: center;*/
+			padding-left: 20px;
+		}
+		thead {
+			background: #393f43;
+			color: white;
+		}
+		input[type=search] {
+			min-height: 38.58px;
+		}
+		#mainTable_filter {
+			margin-bottom: 5px;
+		}
+		table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td {
+			border:  none!important;
+			max-width:  300px;
+			word-wrap: break-word;
+			font-size:  .8rem;
+			font-weight:  700;
+		}
+		table.dataTable.stripe tbody tr.odd, table tbody tr.odd {
+			background: #fafafa !important;
+		}
+		table.dataTable tbody th, table.dataTable tbody td {
+			font-size: .9rem !important;
+			border-top: 1px solid #eee !important;
+			border-right: 1px solid #eee !important;
+			padding: 0.8em !important;
+		}
+		table.dataTable tbody tr.odd:hover,
+		table.dataTable tbody tr.even:hover {
+			background: #d6e9f8!important;
+		}
+		.dataTables_filter {
+			float:  left!important;
+			text-align: left!important;
+			margin-left:  20px;
+		}
+		.dataTables_paginate.paging_simple_numbers {
+			float: left!important;
+		}
+		.dataTables_wrapper .dataTables_info {
+			float: none!important;
+		}
+		.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+			color: #adadad;
+			font-size: .95rem;
+		}
+		.dataTables_wrapper .dataTables_paginate .paginate_button {
+			color: #8a8a8a!important;
+			padding: 0!important;
+			background: none !important;
+			border: none !important;
+		}
+	</style>
+</head>
+<body>
+	<script crossorigin="anonymous" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet"/>
+
+  <div class="top-navbar">
+   <div class="top-navbar-title-wrapper">
+    <div class="top-navbar-title" style="margin-bottom: 10px; font-size:25px">
+      Fuzzer introspection of OSS-Fuzz projects
+    </div>
+    <div style="margin:0; font-size: 10px">
+     For issues and ideas:
+     <a href="https://github.com/ossf/fuzz-introspector/issues" style="color:#FFFFFF;">
+      https://github.com/ossf/fuzz-introspector/issues
+     </a>
+    </div>
+   </div>
+  </div>
+  <div class="main-div">
+  	<div>
+      <b>Fuzz Introspector documentation:</b><a href="https://fuzz-introspector.readthedocs.io/en/latest/">https://fuzz-introspector.readthedocs.io/en/latest/</a>
+      <br>
+      <b>Fuzz Introspector repository:</b><a href="https://github.com/ossf/fuzz-introspector">https://github.com/ossf/fuzz-introspector</a>
+  	</div>
+	<div class="table-wrapper"><table id="mainTable">
+<thead>
+            <tr>
+      <th title="Fuzzer key. Usually fuzzer executable file">
+       Project Report
+      </th>
+      <th title="Number of fuzzers for the project.">
+       Fuzzer count
+      </th>
+      <th title="Percentage of code statially reachable from the fuzzers.">
+       Code statically reached
+      </th>
+      <th title="Percentage of code currently covered at runtime.">
+       Code covered at runtime
+      </th>
+     </tr>
+    </thead>
+<tbody><tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/abseil-cpp/inspector-report/20230130/fuzz_report.html'>abseil-cpp</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/abseil-py/inspector-report/20230130/fuzz_report.html'>abseil-py</a></td><td>1</td><td>00.44%</td><td>43.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/adal/inspector-report/20230130/fuzz_report.html'>adal</a></td><td>2</td><td>44.26%</td><td>55.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/aiohttp/inspector-report/20230130/fuzz_report.html'>aiohttp</a></td><td>7</td><td>02.51%</td><td>63.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/airflow/inspector-report/20230130/fuzz_report.html'>airflow</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/alembic/inspector-report/20230130/fuzz_report.html'>alembic</a></td><td>1</td><td>39.41%</td><td>09.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/apache-httpd/inspector-report/20230130/fuzz_report.html'>apache-httpd</a></td><td>7</td><td>18.75%</td><td>12.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/arduinojson/inspector-report/20230130/fuzz_report.html'>arduinojson</a></td><td>2</td><td>97.56%</td><td>97.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/arrow/inspector-report/20230130/fuzz_report.html'>arrow</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/asn1crypto/inspector-report/20230130/fuzz_report.html'>asn1crypto</a></td><td>1</td><td>14.28%</td><td>56.9%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/aspell/inspector-report/20230130/fuzz_report.html'>aspell</a></td><td>1</td><td>21.21%</td><td>60.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/assimp/inspector-report/20230130/fuzz_report.html'>assimp</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/astc-encoder/inspector-report/20230130/fuzz_report.html'>astc-encoder</a></td><td>1</td><td>68.89%</td><td>61.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/augeas/inspector-report/20230130/fuzz_report.html'>augeas</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/avahi/inspector-report/20230130/fuzz_report.html'>avahi</a></td><td>2</td><td>33.80%</td><td>25.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/azure-sdk-for-python/inspector-report/20230130/fuzz_report.html'>azure-sdk-for-python</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/bearssl/inspector-report/20230130/fuzz_report.html'>bearssl</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/bind9/inspector-report/20230130/fuzz_report.html'>bind9</a></td><td>9</td><td>67.12%</td><td>22.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/binutils/inspector-report/20230130/fuzz_report.html'>binutils</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/bleach/inspector-report/20230130/fuzz_report.html'>bleach</a></td><td>2</td><td>27.81%</td><td>63.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/bloaty/inspector-report/20230130/fuzz_report.html'>bloaty</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/bls-signatures/inspector-report/20230130/fuzz_report.html'>bls-signatures</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/bluez/inspector-report/20230130/fuzz_report.html'>bluez</a></td><td>5</td><td>55.82%</td><td>14.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/boost/inspector-report/20230130/fuzz_report.html'>boost</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/boost-json/inspector-report/20230130/fuzz_report.html'>boost-json</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/boringssl/inspector-report/20230130/fuzz_report.html'>boringssl</a></td><td>20</td><td>35.94%</td><td>46.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/botan/inspector-report/20230130/fuzz_report.html'>botan</a></td><td>37</td><td>21.75%</td><td>34.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/botocore/inspector-report/20230130/fuzz_report.html'>botocore</a></td><td>1</td><td>01.21%</td><td>24.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/bottleneck/inspector-report/20230130/fuzz_report.html'>bottleneck</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/brotli/inspector-report/20230130/fuzz_report.html'>brotli</a></td><td>1</td><td>67.39%</td><td>133.%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/brunsli/inspector-report/20230130/fuzz_report.html'>brunsli</a></td><td>2</td><td>71.37%</td><td>98.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/bs4/inspector-report/20230130/fuzz_report.html'>bs4</a></td><td>1</td><td>40.0%</td><td>20.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/bzip2/inspector-report/20230130/fuzz_report.html'>bzip2</a></td><td>4</td><td>100.0%</td><td>73.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/c-ares/inspector-report/20230130/fuzz_report.html'>c-ares</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/c-blosc/inspector-report/20230130/fuzz_report.html'>c-blosc</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/c-blosc2/inspector-report/20230130/fuzz_report.html'>c-blosc2</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/capnproto/inspector-report/20230130/fuzz_report.html'>capnproto</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/capstone/inspector-report/20230130/fuzz_report.html'>capstone</a></td><td>2</td><td>01.13%</td><td>86.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/casync/inspector-report/20230130/fuzz_report.html'>casync</a></td><td>1</td><td>15.83%</td><td>07.00%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/cctz/inspector-report/20230130/fuzz_report.html'>cctz</a></td><td>1</td><td>69.57%</td><td>66.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/cel-cpp/inspector-report/20230130/fuzz_report.html'>cel-cpp</a></td><td>1</td><td>11.30%</td><td>14.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/cfengine/inspector-report/20230130/fuzz_report.html'>cfengine</a></td><td>1</td><td>10.64%</td><td>05.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/cffi/inspector-report/20230130/fuzz_report.html'>cffi</a></td><td>1</td><td>53.84%</td><td>31.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/cgif/inspector-report/20230130/fuzz_report.html'>cgif</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/chardet/inspector-report/20230130/fuzz_report.html'>chardet</a></td><td>1</td><td>31.26%</td><td>78.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/charset_normalizer/inspector-report/20230130/fuzz_report.html'>charset_normalizer</a></td><td>1</td><td>14.28%</td><td>43.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/circl/inspector-report/20230130/fuzz_report.html'>circl</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/civetweb/inspector-report/20230130/fuzz_report.html'>civetweb</a></td><td>3</td><td>36.39%</td><td>34.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/cjson/inspector-report/20230130/fuzz_report.html'>cjson</a></td><td>1</td><td>28.34%</td><td>26.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/clamav/inspector-report/20230130/fuzz_report.html'>clamav</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/clib/inspector-report/20230130/fuzz_report.html'>clib</a></td><td>1</td><td>26.83%</td><td>18.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/click/inspector-report/20230130/fuzz_report.html'>click</a></td><td>1</td><td>06.02%</td><td>52.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/cmake/inspector-report/20230130/fuzz_report.html'>cmake</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/cmark/inspector-report/20230130/fuzz_report.html'>cmark</a></td><td>1</td><td>14.23%</td><td>80.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/coturn/inspector-report/20230130/fuzz_report.html'>coturn</a></td><td>2</td><td>15.38%</td><td>11.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/coveragepy/inspector-report/20230130/fuzz_report.html'>coveragepy</a></td><td>1</td><td>04.81%</td><td>03.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/cppcheck/inspector-report/20230130/fuzz_report.html'>cppcheck</a></td><td>1</td><td>47.09%</td><td>38.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/croaring/inspector-report/20230130/fuzz_report.html'>croaring</a></td><td>1</td><td>04.61%</td><td>06.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/croniter/inspector-report/20230130/fuzz_report.html'>croniter</a></td><td>1</td><td>05.60%</td><td>42.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/cryptography/inspector-report/20230130/fuzz_report.html'>cryptography</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/cups/inspector-report/20230130/fuzz_report.html'>cups</a></td><td>3</td><td>21.63%</td><td>10.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/curl/inspector-report/20230130/fuzz_report.html'>curl</a></td><td>21</td><td>32.37%</td><td>01.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/cyclonedds/inspector-report/20230130/fuzz_report.html'>cyclonedds</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/dart/inspector-report/20230130/fuzz_report.html'>dart</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/dask/inspector-report/20230130/fuzz_report.html'>dask</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/dav1d/inspector-report/20230130/fuzz_report.html'>dav1d</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/dbus-broker/inspector-report/20230130/fuzz_report.html'>dbus-broker</a></td><td>1</td><td>68.26%</td><td>45.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/decorator/inspector-report/20230130/fuzz_report.html'>decorator</a></td><td>2</td><td>56.96%</td><td>54.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/digest/inspector-report/20230130/fuzz_report.html'>digest</a></td><td>1</td><td>18.0%</td><td>39.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/distlib/inspector-report/20230130/fuzz_report.html'>distlib</a></td><td>2</td><td>08.74%</td><td>41.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/django/inspector-report/20230130/fuzz_report.html'>django</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/dng_sdk/inspector-report/20230130/fuzz_report.html'>dng_sdk</a></td><td>5</td><td>39.51%</td><td>66.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/dnsmasq/inspector-report/20230130/fuzz_report.html'>dnsmasq</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/dnspython/inspector-report/20230130/fuzz_report.html'>dnspython</a></td><td>2</td><td>40.0%</td><td>53.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/docutils/inspector-report/20230130/fuzz_report.html'>docutils</a></td><td>1</td><td>00.38%</td><td>55.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/double-conversion/inspector-report/20230130/fuzz_report.html'>double-conversion</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/dovecot/inspector-report/20230130/fuzz_report.html'>dovecot</a></td><td>4</td><td>51.63%</td><td>32.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/draco/inspector-report/20230130/fuzz_report.html'>draco</a></td><td>4</td><td>04.51%</td><td>66.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/dropbear/inspector-report/20230130/fuzz_report.html'>dropbear</a></td><td>10</td><td>62.56%</td><td>62.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/duckdb/inspector-report/20230130/fuzz_report.html'>duckdb</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/e2fsprogs/inspector-report/20230130/fuzz_report.html'>e2fsprogs</a></td><td>3</td><td>22.22%</td><td>15.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/easywsclient/inspector-report/20230130/fuzz_report.html'>easywsclient</a></td><td>1</td><td>27.44%</td><td>06.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ecdsa-python/inspector-report/20230130/fuzz_report.html'>ecdsa-python</a></td><td>1</td><td>61.11%</td><td>17.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/eigen/inspector-report/20230130/fuzz_report.html'>eigen</a></td><td>2</td><td>87.60%</td><td>94.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/elfutils/inspector-report/20230130/fuzz_report.html'>elfutils</a></td><td>3</td><td>41.50%</td><td>27.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/espeak-ng/inspector-report/20230130/fuzz_report.html'>espeak-ng</a></td><td>2</td><td>92.85%</td><td>53.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/et-xmlfile/inspector-report/20230130/fuzz_report.html'>et-xmlfile</a></td><td>1</td><td>01.19%</td><td>03.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/exiv2/inspector-report/20230130/fuzz_report.html'>exiv2</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/expat/inspector-report/20230130/fuzz_report.html'>expat</a></td><td>12</td><td>50.62%</td><td>62.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/exprtk/inspector-report/20230130/fuzz_report.html'>exprtk</a></td><td>1</td><td>22.88%</td><td>43.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/fast-dds/inspector-report/20230130/fuzz_report.html'>fast-dds</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/file/inspector-report/20230130/fuzz_report.html'>file</a></td><td>3</td><td>90.30%</td><td>63.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/filelock/inspector-report/20230130/fuzz_report.html'>filelock</a></td><td>1</td><td>12.0%</td><td>60.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/filesystem_spec/inspector-report/20230130/fuzz_report.html'>filesystem_spec</a></td><td>1</td><td>00.08%</td><td>46.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/fio/inspector-report/20230130/fuzz_report.html'>fio</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/firestore/inspector-report/20230130/fuzz_report.html'>firestore</a></td><td>4</td><td>08.49%</td><td>10.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/flac/inspector-report/20230130/fuzz_report.html'>flac</a></td><td>13</td><td>86.41%</td><td>78.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/flask/inspector-report/20230130/fuzz_report.html'>flask</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/flask-restx/inspector-report/20230130/fuzz_report.html'>flask-restx</a></td><td>1</td><td>07.61%</td><td>65.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/flatbuffers/inspector-report/20230130/fuzz_report.html'>flatbuffers</a></td><td>6</td><td>61.04%</td><td>59.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/fluent-bit/inspector-report/20230130/fuzz_report.html'>fluent-bit</a></td><td>21</td><td>40.75%</td><td>54.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/fmt/inspector-report/20230130/fuzz_report.html'>fmt</a></td><td>6</td><td>91.04%</td><td>89.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/fonttools/inspector-report/20230130/fuzz_report.html'>fonttools</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/freeimage/inspector-report/20230130/fuzz_report.html'>freeimage</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/freeradius/inspector-report/20230130/fuzz_report.html'>freeradius</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/freetype2/inspector-report/20230130/fuzz_report.html'>freetype2</a></td><td>33</td><td>08.72%</td><td>53.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/fribidi/inspector-report/20230130/fuzz_report.html'>fribidi</a></td><td>1</td><td>58.87%</td><td>40.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ftfy/inspector-report/20230130/fuzz_report.html'>ftfy</a></td><td>2</td><td>07.81%</td><td>36.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-auth-httplib2/inspector-report/20230130/fuzz_report.html'>g-api-auth-httplib2</a></td><td>1</td><td>02.24%</td><td>62.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-auth-library-python/inspector-report/20230130/fuzz_report.html'>g-api-auth-library-python</a></td><td>2</td><td>17.19%</td><td>24.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-pubsub/inspector-report/20230130/fuzz_report.html'>g-api-pubsub</a></td><td>1</td><td>00.30%</td><td>44.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-py-api-common-protos/inspector-report/20230130/fuzz_report.html'>g-api-py-api-common-protos</a></td><td>1</td><td>00.24%</td><td>30.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-py-oauthlib/inspector-report/20230130/fuzz_report.html'>g-api-py-oauthlib</a></td><td>1</td><td>02.27%</td><td>67.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-python-bigquery-storage/inspector-report/20230130/fuzz_report.html'>g-api-python-bigquery-storage</a></td><td>1</td><td>01.54%</td><td>50.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-python-client/inspector-report/20230130/fuzz_report.html'>g-api-python-client</a></td><td>1</td><td>30.0%</td><td>40.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-python-cloud-core/inspector-report/20230130/fuzz_report.html'>g-api-python-cloud-core</a></td><td>1</td><td>00.51%</td><td>19.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-python-firestore/inspector-report/20230130/fuzz_report.html'>g-api-python-firestore</a></td><td>1</td><td>00.26%</td><td>44.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-python-tasks/inspector-report/20230130/fuzz_report.html'>g-api-python-tasks</a></td><td>1</td><td>00.55%</td><td>35.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-resource-manager/inspector-report/20230130/fuzz_report.html'>g-api-resource-manager</a></td><td>1</td><td>00.54%</td><td>48.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-resumable-media-python/inspector-report/20230130/fuzz_report.html'>g-api-resumable-media-python</a></td><td>1</td><td>17.94%</td><td>25.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-api-secret-manager/inspector-report/20230130/fuzz_report.html'>g-api-secret-manager</a></td><td>2</td><td>00.94%</td><td>37.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-apis-py-api-core/inspector-report/20230130/fuzz_report.html'>g-apis-py-api-core</a></td><td>1</td><td>00.80%</td><td>01.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-cloud-logging-py/inspector-report/20230130/fuzz_report.html'>g-cloud-logging-py</a></td><td>4</td><td>01.99%</td><td>48.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-py-bigquery/inspector-report/20230130/fuzz_report.html'>g-py-bigquery</a></td><td>1</td><td>00.39%</td><td>50.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/g-py-crc32c/inspector-report/20230130/fuzz_report.html'>g-py-crc32c</a></td><td>1</td><td>00.0%</td><td>42.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gast/inspector-report/20230130/fuzz_report.html'>gast</a></td><td>1</td><td>01.52%</td><td>88.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gc-iam/inspector-report/20230130/fuzz_report.html'>gc-iam</a></td><td>1</td><td>00.32%</td><td>32.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gcloud-error-py/inspector-report/20230130/fuzz_report.html'>gcloud-error-py</a></td><td>1</td><td>00.11%</td><td>50.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gcp-python-cloud-storage/inspector-report/20230130/fuzz_report.html'>gcp-python-cloud-storage</a></td><td>1</td><td>00.63%</td><td>33.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gdbm/inspector-report/20230130/fuzz_report.html'>gdbm</a></td><td>1</td><td>23.18%</td><td>44.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gdk-pixbuf/inspector-report/20230130/fuzz_report.html'>gdk-pixbuf</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/geos/inspector-report/20230130/fuzz_report.html'>geos</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gfwx/inspector-report/20230130/fuzz_report.html'>gfwx</a></td><td>2</td><td>83.40%</td><td>78.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ghostscript/inspector-report/20230130/fuzz_report.html'>ghostscript</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/giflib/inspector-report/20230130/fuzz_report.html'>giflib</a></td><td>3</td><td>25.47%</td><td>43.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/git/inspector-report/20230130/fuzz_report.html'>git</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gitdb/inspector-report/20230130/fuzz_report.html'>gitdb</a></td><td>1</td><td>24.18%</td><td>76.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/github_scarecrow/inspector-report/20230130/fuzz_report.html'>github_scarecrow</a></td><td>1</td><td>38.70%</td><td>40.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/glib/inspector-report/20230130/fuzz_report.html'>glib</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/glom/inspector-report/20230130/fuzz_report.html'>glom</a></td><td>1</td><td>14.12%</td><td>73.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gnupg/inspector-report/20230130/fuzz_report.html'>gnupg</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gnutls/inspector-report/20230130/fuzz_report.html'>gnutls</a></td><td>27</td><td>45.76%</td><td>47.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gpac/inspector-report/20230130/fuzz_report.html'>gpac</a></td><td>1</td><td>03.37%</td><td>08.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gpsd/inspector-report/20230130/fuzz_report.html'>gpsd</a></td><td>2</td><td>16.70%</td><td>07.00%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/grok/inspector-report/20230130/fuzz_report.html'>grok</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/grpc-httpjson-transcoding/inspector-report/20230130/fuzz_report.html'>grpc-httpjson-transcoding</a></td><td>2</td><td>00.54%</td><td>02.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/grpc-py/inspector-report/20230130/fuzz_report.html'>grpc-py</a></td><td>1</td><td>00.23%</td><td>39.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gstreamer/inspector-report/20230130/fuzz_report.html'>gstreamer</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/guetzli/inspector-report/20230130/fuzz_report.html'>guetzli</a></td><td>1</td><td>72.58%</td><td>64.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/gunicorn/inspector-report/20230130/fuzz_report.html'>gunicorn</a></td><td>1</td><td>04.93%</td><td>07.00%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/h2o/inspector-report/20230130/fuzz_report.html'>h2o</a></td><td>4</td><td>22.56%</td><td>20.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/h3/inspector-report/20230130/fuzz_report.html'>h3</a></td><td>20</td><td>95.6%</td><td>86.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/haproxy/inspector-report/20230130/fuzz_report.html'>haproxy</a></td><td>2</td><td>04.23%</td><td>02.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/harfbuzz/inspector-report/20230130/fuzz_report.html'>harfbuzz</a></td><td>5</td><td>40.00%</td><td>82.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/hdf5/inspector-report/20230130/fuzz_report.html'>hdf5</a></td><td>1</td><td>03.64%</td><td>12.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/hermes/inspector-report/20230130/fuzz_report.html'>hermes</a></td><td>1</td><td>00.14%</td><td>28.9%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/hiredis/inspector-report/20230130/fuzz_report.html'>hiredis</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/hiredis-py/inspector-report/20230130/fuzz_report.html'>hiredis-py</a></td><td>1</td><td>25.0%</td><td>38.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/hoextdown/inspector-report/20230130/fuzz_report.html'>hoextdown</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/hostap/inspector-report/20230130/fuzz_report.html'>hostap</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/html5lib-python/inspector-report/20230130/fuzz_report.html'>html5lib-python</a></td><td>1</td><td>00.26%</td><td>60.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/htslib/inspector-report/20230130/fuzz_report.html'>htslib</a></td><td>1</td><td>67.84%</td><td>27.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/http-parser/inspector-report/20230130/fuzz_report.html'>http-parser</a></td><td>2</td><td>83.52%</td><td>47.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/http-pattern-matcher/inspector-report/20230130/fuzz_report.html'>http-pattern-matcher</a></td><td>1</td><td>75.78%</td><td>67.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/httplib2/inspector-report/20230130/fuzz_report.html'>httplib2</a></td><td>2</td><td>37.70%</td><td>24.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/httpx/inspector-report/20230130/fuzz_report.html'>httpx</a></td><td>3</td><td>08.60%</td><td>68.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/hunspell/inspector-report/20230130/fuzz_report.html'>hunspell</a></td><td>2</td><td>91.17%</td><td>66.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ibmswtpm2/inspector-report/20230130/fuzz_report.html'>ibmswtpm2</a></td><td>1</td><td>35.00%</td><td>12.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/icu/inspector-report/20230130/fuzz_report.html'>icu</a></td><td>14</td><td>32.02%</td><td>32.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/idna/inspector-report/20230130/fuzz_report.html'>idna</a></td><td>1</td><td>34.58%</td><td>21.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/igraph/inspector-report/20230130/fuzz_report.html'>igraph</a></td><td>11</td><td>28.44%</td><td>18.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ijson/inspector-report/20230130/fuzz_report.html'>ijson</a></td><td>1</td><td>00.32%</td><td>70.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/immer/inspector-report/20230130/fuzz_report.html'>immer</a></td><td>19</td><td>83.22%</td><td>98.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/inchi/inspector-report/20230130/fuzz_report.html'>inchi</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/iniconfig/inspector-report/20230130/fuzz_report.html'>iniconfig</a></td><td>1</td><td>48.52%</td><td>24.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ipython/inspector-report/20230130/fuzz_report.html'>ipython</a></td><td>1</td><td>00.85%</td><td>63.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/irssi/inspector-report/20230130/fuzz_report.html'>irssi</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/isodate/inspector-report/20230130/fuzz_report.html'>isodate</a></td><td>1</td><td>07.46%</td><td>72.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/itsdangerous/inspector-report/20230130/fuzz_report.html'>itsdangerous</a></td><td>1</td><td>22.83%</td><td>72.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/janet/inspector-report/20230130/fuzz_report.html'>janet</a></td><td>1</td><td>10.53%</td><td>08.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/jansson/inspector-report/20230130/fuzz_report.html'>jansson</a></td><td>1</td><td>66.97%</td><td>53.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/janus-gateway/inspector-report/20230130/fuzz_report.html'>janus-gateway</a></td><td>3</td><td>36.27%</td><td>20.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/jbig2dec/inspector-report/20230130/fuzz_report.html'>jbig2dec</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/jedi/inspector-report/20230130/fuzz_report.html'>jedi</a></td><td>1</td><td>00.06%</td><td>72.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/jinja2/inspector-report/20230130/fuzz_report.html'>jinja2</a></td><td>3</td><td>15.45%</td><td>62.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/jmespathpy/inspector-report/20230130/fuzz_report.html'>jmespathpy</a></td><td>1</td><td>06.48%</td><td>56.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/jsmin/inspector-report/20230130/fuzz_report.html'>jsmin</a></td><td>1</td><td>40.0%</td><td>30.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/json/inspector-report/20230130/fuzz_report.html'>json</a></td><td>6</td><td>11.20%</td><td>74.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/json-c/inspector-report/20230130/fuzz_report.html'>json-c</a></td><td>1</td><td>61.98%</td><td>31.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/jsoncons/inspector-report/20230130/fuzz_report.html'>jsoncons</a></td><td>18</td><td>42.82%</td><td>67.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/jsoncpp/inspector-report/20230130/fuzz_report.html'>jsoncpp</a></td><td>2</td><td>07.73%</td><td>32.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/jsonnet/inspector-report/20230130/fuzz_report.html'>jsonnet</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/jupyter-nbconvert/inspector-report/20230130/fuzz_report.html'>jupyter-nbconvert</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/jupyter_server/inspector-report/20230130/fuzz_report.html'>jupyter_server</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/kafka/inspector-report/20230130/fuzz_report.html'>kafka</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/kamailio/inspector-report/20230130/fuzz_report.html'>kamailio</a></td><td>2</td><td>10.68%</td><td>04.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/kcodecs/inspector-report/20230130/fuzz_report.html'>kcodecs</a></td><td>1</td><td>22.29%</td><td>10.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/keystone/inspector-report/20230130/fuzz_report.html'>keystone</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/kiwisolver/inspector-report/20230130/fuzz_report.html'>kiwisolver</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/knot-dns/inspector-report/20230130/fuzz_report.html'>knot-dns</a></td><td>4</td><td>02.42%</td><td>04.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/krb5/inspector-report/20230130/fuzz_report.html'>krb5</a></td><td>7</td><td>19.18%</td><td>09.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/lame/inspector-report/20230130/fuzz_report.html'>lame</a></td><td>1</td><td>21.14%</td><td>32.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/lcms/inspector-report/20230130/fuzz_report.html'>lcms</a></td><td>7</td><td>39.74%</td><td>52.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/leptonica/inspector-report/20230130/fuzz_report.html'>leptonica</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/leveldb/inspector-report/20230130/fuzz_report.html'>leveldb</a></td><td>1</td><td>53.22%</td><td>71.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libaom/inspector-report/20230130/fuzz_report.html'>libaom</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libarchive/inspector-report/20230130/fuzz_report.html'>libarchive</a></td><td>1</td><td>13.96%</td><td>22.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libass/inspector-report/20230130/fuzz_report.html'>libass</a></td><td>1</td><td>35.87%</td><td>21.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libavc/inspector-report/20230130/fuzz_report.html'>libavc</a></td><td>1</td><td>84.53%</td><td>07.00%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libavif/inspector-report/20230130/fuzz_report.html'>libavif</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libbpf/inspector-report/20230130/fuzz_report.html'>libbpf</a></td><td>1</td><td>32.93%</td><td>22.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libcacard/inspector-report/20230130/fuzz_report.html'>libcacard</a></td><td>3</td><td>30.82%</td><td>57.9%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libcbor/inspector-report/20230130/fuzz_report.html'>libcbor</a></td><td>1</td><td>59.36%</td><td>85.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libcoap/inspector-report/20230130/fuzz_report.html'>libcoap</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libcst/inspector-report/20230130/fuzz_report.html'>libcst</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libdwarf/inspector-report/20230130/fuzz_report.html'>libdwarf</a></td><td>2</td><td>20.63%</td><td>27.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libecc/inspector-report/20230130/fuzz_report.html'>libecc</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libevent/inspector-report/20230130/fuzz_report.html'>libevent</a></td><td>2</td><td>07.17%</td><td>03.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libexif/inspector-report/20230130/fuzz_report.html'>libexif</a></td><td>2</td><td>82.50%</td><td>75.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libfdk-aac/inspector-report/20230130/fuzz_report.html'>libfdk-aac</a></td><td>3</td><td>59.41%</td><td>52.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libfido2/inspector-report/20230130/fuzz_report.html'>libfido2</a></td><td>9</td><td>90.07%</td><td>513.%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libgd/inspector-report/20230130/fuzz_report.html'>libgd</a></td><td>11</td><td>39.03%</td><td>34.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libgit2/inspector-report/20230130/fuzz_report.html'>libgit2</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libheif/inspector-report/20230130/fuzz_report.html'>libheif</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libhevc/inspector-report/20230130/fuzz_report.html'>libhevc</a></td><td>1</td><td>96.21%</td><td>80.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libhtp/inspector-report/20230130/fuzz_report.html'>libhtp</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libical/inspector-report/20230130/fuzz_report.html'>libical</a></td><td>1</td><td>35.16%</td><td>16.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libidn/inspector-report/20230130/fuzz_report.html'>libidn</a></td><td>3</td><td>47.38%</td><td>70.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libidn2/inspector-report/20230130/fuzz_report.html'>libidn2</a></td><td>3</td><td>61.4%</td><td>71.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libiec61850/inspector-report/20230130/fuzz_report.html'>libiec61850</a></td><td>1</td><td>14.85%</td><td>15.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libigl/inspector-report/20230130/fuzz_report.html'>libigl</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libjpeg-turbo/inspector-report/20230130/fuzz_report.html'>libjpeg-turbo</a></td><td>22</td><td>88.30%</td><td>64.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libjxl/inspector-report/20230130/fuzz_report.html'>libjxl</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libldac/inspector-report/20230130/fuzz_report.html'>libldac</a></td><td>1</td><td>92.17%</td><td>73.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/liblouis/inspector-report/20230130/fuzz_report.html'>liblouis</a></td><td>1</td><td>78.84%</td><td>27.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libmodbus/inspector-report/20230130/fuzz_report.html'>libmodbus</a></td><td>2</td><td>44.33%</td><td>18.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libmpeg2/inspector-report/20230130/fuzz_report.html'>libmpeg2</a></td><td>1</td><td>90.18%</td><td>79.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libpcap/inspector-report/20230130/fuzz_report.html'>libpcap</a></td><td>3</td><td>57.94%</td><td>43.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libpg_query/inspector-report/20230130/fuzz_report.html'>libpg_query</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libplist/inspector-report/20230130/fuzz_report.html'>libplist</a></td><td>4</td><td>54.33%</td><td>40.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libpng/inspector-report/20230130/fuzz_report.html'>libpng</a></td><td>1</td><td>64.25%</td><td>43.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libpng-proto/inspector-report/20230130/fuzz_report.html'>libpng-proto</a></td><td>5</td><td>58.37%</td><td>00.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libprotobuf-mutator/inspector-report/20230130/fuzz_report.html'>libprotobuf-mutator</a></td><td>2</td><td>36.70%</td><td>26.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libpsl/inspector-report/20230130/fuzz_report.html'>libpsl</a></td><td>15</td><td>25.45%</td><td>21.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libraw/inspector-report/20230130/fuzz_report.html'>libraw</a></td><td>4</td><td>82.77%</td><td>63.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/librawspeed/inspector-report/20230130/fuzz_report.html'>librawspeed</a></td><td>23</td><td>30.29%</td><td>76.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/librdkafka/inspector-report/20230130/fuzz_report.html'>librdkafka</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libredwg/inspector-report/20230130/fuzz_report.html'>libredwg</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libressl/inspector-report/20230130/fuzz_report.html'>libressl</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libsass/inspector-report/20230130/fuzz_report.html'>libsass</a></td><td>1</td><td>02.43%</td><td>27.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libsndfile/inspector-report/20230130/fuzz_report.html'>libsndfile</a></td><td>2</td><td>82.67%</td><td>45.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libsodium/inspector-report/20230130/fuzz_report.html'>libsodium</a></td><td>2</td><td>42.99%</td><td>26.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libspectre/inspector-report/20230130/fuzz_report.html'>libspectre</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libspng/inspector-report/20230130/fuzz_report.html'>libspng</a></td><td>3</td><td>75.08%</td><td>61.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libsrtp/inspector-report/20230130/fuzz_report.html'>libsrtp</a></td><td>1</td><td>28.95%</td><td>69.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libssh/inspector-report/20230130/fuzz_report.html'>libssh</a></td><td>5</td><td>57.62%</td><td>39.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libssh2/inspector-report/20230130/fuzz_report.html'>libssh2</a></td><td>1</td><td>24.66%</td><td>25.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libtasn1/inspector-report/20230130/fuzz_report.html'>libtasn1</a></td><td>9</td><td>57.52%</td><td>56.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libtheora/inspector-report/20230130/fuzz_report.html'>libtheora</a></td><td>1</td><td>75.07%</td><td>53.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libtiff/inspector-report/20230130/fuzz_report.html'>libtiff</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libtpms/inspector-report/20230130/fuzz_report.html'>libtpms</a></td><td>1</td><td>00.16%</td><td>36.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libtsm/inspector-report/20230130/fuzz_report.html'>libtsm</a></td><td>1</td><td>89.97%</td><td>65.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libucl/inspector-report/20230130/fuzz_report.html'>libucl</a></td><td>1</td><td>69.42%</td><td>36.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libusb/inspector-report/20230130/fuzz_report.html'>libusb</a></td><td>1</td><td>01.08%</td><td>02.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libvips/inspector-report/20230130/fuzz_report.html'>libvips</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libvnc/inspector-report/20230130/fuzz_report.html'>libvnc</a></td><td>1</td><td>28.31%</td><td>17.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libvpx/inspector-report/20230130/fuzz_report.html'>libvpx</a></td><td>2</td><td>00.71%</td><td>53.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libwebp/inspector-report/20230130/fuzz_report.html'>libwebp</a></td><td>7</td><td>91.70%</td><td>91.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libwebsockets/inspector-report/20230130/fuzz_report.html'>libwebsockets</a></td><td>1</td><td>02.02%</td><td>02.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libxls/inspector-report/20230130/fuzz_report.html'>libxls</a></td><td>1</td><td>87.34%</td><td>62.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libxml2/inspector-report/20230130/fuzz_report.html'>libxml2</a></td><td>6</td><td>74.72%</td><td>56.9%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libxslt/inspector-report/20230130/fuzz_report.html'>libxslt</a></td><td>2</td><td>68.78%</td><td>47.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libyal/inspector-report/20230130/fuzz_report.html'>libyal</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libyaml/inspector-report/20230130/fuzz_report.html'>libyaml</a></td><td>9</td><td>99.05%</td><td>86.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libyang/inspector-report/20230130/fuzz_report.html'>libyang</a></td><td>3</td><td>72.09%</td><td>40.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libzip/inspector-report/20230130/fuzz_report.html'>libzip</a></td><td>1</td><td>77.69%</td><td>50.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/libzmq/inspector-report/20230130/fuzz_report.html'>libzmq</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/lighttpd/inspector-report/20230130/fuzz_report.html'>lighttpd</a></td><td>1</td><td>48.03%</td><td>30.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/lldpd/inspector-report/20230130/fuzz_report.html'>lldpd</a></td><td>1</td><td>05.45%</td><td>02.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/llhttp/inspector-report/20230130/fuzz_report.html'>llhttp</a></td><td>1</td><td>73.79%</td><td>78.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/llvm_libcxx/inspector-report/20230130/fuzz_report.html'>llvm_libcxx</a></td><td>16</td><td>86.04%</td><td>70.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/llvm_libcxxabi/inspector-report/20230130/fuzz_report.html'>llvm_libcxxabi</a></td><td>1</td><td>04.25%</td><td>28.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/lodepng/inspector-report/20230130/fuzz_report.html'>lodepng</a></td><td>1</td><td>43.56%</td><td>44.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/looker-sdk/inspector-report/20230130/fuzz_report.html'>looker-sdk</a></td><td>1</td><td>03.36%</td><td>86.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/lua/inspector-report/20230130/fuzz_report.html'>lua</a></td><td>1</td><td>54.62%</td><td>63.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/lwan/inspector-report/20230130/fuzz_report.html'>lwan</a></td><td>5</td><td>32.09%</td><td>33.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/lxc/inspector-report/20230130/fuzz_report.html'>lxc</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/lxml/inspector-report/20230130/fuzz_report.html'>lxml</a></td><td>6</td><td>40.17%</td><td>49.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/lz4/inspector-report/20230130/fuzz_report.html'>lz4</a></td><td>10</td><td>86.06%</td><td>75.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/lzma/inspector-report/20230130/fuzz_report.html'>lzma</a></td><td>9</td><td>86.95%</td><td>85.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/lzo/inspector-report/20230130/fuzz_report.html'>lzo</a></td><td>3</td><td>11.65%</td><td>83.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/mako/inspector-report/20230130/fuzz_report.html'>mako</a></td><td>1</td><td>09.60%</td><td>36.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/markdown-it-py/inspector-report/20230130/fuzz_report.html'>markdown-it-py</a></td><td>1</td><td>45.45%</td><td>27.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/markupsafe/inspector-report/20230130/fuzz_report.html'>markupsafe</a></td><td>1</td><td>07.89%</td><td>09.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/matio/inspector-report/20230130/fuzz_report.html'>matio</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/mbedtls/inspector-report/20230130/fuzz_report.html'>mbedtls</a></td><td>10</td><td>50.28%</td><td>50.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/md4c/inspector-report/20230130/fuzz_report.html'>md4c</a></td><td>1</td><td>96.96%</td><td>92.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/mdbtools/inspector-report/20230130/fuzz_report.html'>mdbtools</a></td><td>1</td><td>53.61%</td><td>32.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/mdurl/inspector-report/20230130/fuzz_report.html'>mdurl</a></td><td>1</td><td>07.28%</td><td>40.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/meshoptimizer/inspector-report/20230130/fuzz_report.html'>meshoptimizer</a></td><td>1</td><td>22.06%</td><td>42.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/miniz/inspector-report/20230130/fuzz_report.html'>miniz</a></td><td>8</td><td>61.46%</td><td>43.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/minizip/inspector-report/20230130/fuzz_report.html'>minizip</a></td><td>2</td><td>67.82%</td><td>54.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/monero/inspector-report/20230130/fuzz_report.html'>monero</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/mongoose/inspector-report/20230130/fuzz_report.html'>mongoose</a></td><td>1</td><td>43.38%</td><td>22.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/mosh/inspector-report/20230130/fuzz_report.html'>mosh</a></td><td>2</td><td>19.53%</td><td>06.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/mpg123/inspector-report/20230130/fuzz_report.html'>mpg123</a></td><td>2</td><td>43.97%</td><td>40.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/mrab-regex/inspector-report/20230130/fuzz_report.html'>mrab-regex</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/mruby/inspector-report/20230130/fuzz_report.html'>mruby</a></td><td>2</td><td>74.67%</td><td>40.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/msal/inspector-report/20230130/fuzz_report.html'>msal</a></td><td>2</td><td>27.23%</td><td>33.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/msgpack-c/inspector-report/20230130/fuzz_report.html'>msgpack-c</a></td><td>1</td><td>40.36%</td><td>76.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/msgpack-python/inspector-report/20230130/fuzz_report.html'>msgpack-python</a></td><td>1</td><td>29.24%</td><td>31.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/muduo/inspector-report/20230130/fuzz_report.html'>muduo</a></td><td>1</td><td>10.98%</td><td>12.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/muparser/inspector-report/20230130/fuzz_report.html'>muparser</a></td><td>1</td><td>06.56%</td><td>43.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/mupdf/inspector-report/20230130/fuzz_report.html'>mupdf</a></td><td>1</td><td>13.21%</td><td>17.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/myanmar-tools/inspector-report/20230130/fuzz_report.html'>myanmar-tools</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/nanopb/inspector-report/20230130/fuzz_report.html'>nanopb</a></td><td>5</td><td>97.93%</td><td>93.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ndpi/inspector-report/20230130/fuzz_report.html'>ndpi</a></td><td>17</td><td>92.48%</td><td>85.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/neomutt/inspector-report/20230130/fuzz_report.html'>neomutt</a></td><td>1</td><td>06.51%</td><td>05.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/nestegg/inspector-report/20230130/fuzz_report.html'>nestegg</a></td><td>1</td><td>85.73%</td><td>83.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/net-snmp/inspector-report/20230130/fuzz_report.html'>net-snmp</a></td><td>15</td><td>81.84%</td><td>33.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/netaddr-py/inspector-report/20230130/fuzz_report.html'>netaddr-py</a></td><td>1</td><td>45.0%</td><td>23.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/netcdf/inspector-report/20230130/fuzz_report.html'>netcdf</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/nettle/inspector-report/20230130/fuzz_report.html'>nettle</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/networkx/inspector-report/20230130/fuzz_report.html'>networkx</a></td><td>3</td><td>00.10%</td><td>61.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/nghttp2/inspector-report/20230130/fuzz_report.html'>nghttp2</a></td><td>3</td><td>78.59%</td><td>56.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/nginx/inspector-report/20230130/fuzz_report.html'>nginx</a></td><td>1</td><td>12.99%</td><td>28.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ninja/inspector-report/20230130/fuzz_report.html'>ninja</a></td><td>1</td><td>04.81%</td><td>24.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/nss/inspector-report/20230130/fuzz_report.html'>nss</a></td><td>35</td><td>34.81%</td><td>28.9%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ntlm2/inspector-report/20230130/fuzz_report.html'>ntlm2</a></td><td>2</td><td>42.52%</td><td>69.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ntp/inspector-report/20230130/fuzz_report.html'>ntp</a></td><td>2</td><td>26.10%</td><td>10.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ntpsec/inspector-report/20230130/fuzz_report.html'>ntpsec</a></td><td>3</td><td>24.76%</td><td>05.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/numpy/inspector-report/20230130/fuzz_report.html'>numpy</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/oatpp/inspector-report/20230130/fuzz_report.html'>oatpp</a></td><td>1</td><td>05.09%</td><td>14.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/oauth2/inspector-report/20230130/fuzz_report.html'>oauth2</a></td><td>1</td><td>68.85%</td><td>70.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/oauthlib/inspector-report/20230130/fuzz_report.html'>oauthlib</a></td><td>1</td><td>06.09%</td><td>34.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/olefile/inspector-report/20230130/fuzz_report.html'>olefile</a></td><td>1</td><td>41.40%</td><td>47.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/oniguruma/inspector-report/20230130/fuzz_report.html'>oniguruma</a></td><td>1</td><td>77.15%</td><td>81.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/open62541/inspector-report/20230130/fuzz_report.html'>open62541</a></td><td>10</td><td>55.32%</td><td>47.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/openbabel/inspector-report/20230130/fuzz_report.html'>openbabel</a></td><td>2</td><td>00.40%</td><td>16.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/opencensus-cpp/inspector-report/20230130/fuzz_report.html'>opencensus-cpp</a></td><td>5</td><td>06.53%</td><td>10.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/opencv/inspector-report/20230130/fuzz_report.html'>opencv</a></td><td>9</td><td>08.88%</td><td>09.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/opendnp3/inspector-report/20230130/fuzz_report.html'>opendnp3</a></td><td>3</td><td>22.02%</td><td>62.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/openexr/inspector-report/20230130/fuzz_report.html'>openexr</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/openh264/inspector-report/20230130/fuzz_report.html'>openh264</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/openjpeg/inspector-report/20230130/fuzz_report.html'>openjpeg</a></td><td>2</td><td>04.46%</td><td>51.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/openpyxl/inspector-report/20230130/fuzz_report.html'>openpyxl</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/opensc/inspector-report/20230130/fuzz_report.html'>opensc</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/opensips/inspector-report/20230130/fuzz_report.html'>opensips</a></td><td>3</td><td>09.98%</td><td>03.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/openssh/inspector-report/20230130/fuzz_report.html'>openssh</a></td><td>8</td><td>41.32%</td><td>38.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/openssl/inspector-report/20230130/fuzz_report.html'>openssl</a></td><td>36</td><td>27.98%</td><td>42.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/openthread/inspector-report/20230130/fuzz_report.html'>openthread</a></td><td>4</td><td>60.67%</td><td>67.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/openvpn/inspector-report/20230130/fuzz_report.html'>openvpn</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/openvswitch/inspector-report/20230130/fuzz_report.html'>openvswitch</a></td><td>6</td><td>28.93%</td><td>25.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/openweave/inspector-report/20230130/fuzz_report.html'>openweave</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/opus/inspector-report/20230130/fuzz_report.html'>opus</a></td><td>12</td><td>89.10%</td><td>92.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/opusfile/inspector-report/20230130/fuzz_report.html'>opusfile</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/oracle-py-cx/inspector-report/20230130/fuzz_report.html'>oracle-py-cx</a></td><td>1</td><td>54.21%</td><td>37.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/orbit/inspector-report/20230130/fuzz_report.html'>orbit</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/oscrypto/inspector-report/20230130/fuzz_report.html'>oscrypto</a></td><td>2</td><td>43.75%</td><td>75.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ots/inspector-report/20230130/fuzz_report.html'>ots</a></td><td>1</td><td>20.50%</td><td>73.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/p11-kit/inspector-report/20230130/fuzz_report.html'>p11-kit</a></td><td>1</td><td>08.32%</td><td>02.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/packaging/inspector-report/20230130/fuzz_report.html'>packaging</a></td><td>1</td><td>14.32%</td><td>64.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pandas/inspector-report/20230130/fuzz_report.html'>pandas</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/paramiko/inspector-report/20230130/fuzz_report.html'>paramiko</a></td><td>1</td><td>04.14%</td><td>76.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/parso/inspector-report/20230130/fuzz_report.html'>parso</a></td><td>1</td><td>02.89%</td><td>70.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pasta/inspector-report/20230130/fuzz_report.html'>pasta</a></td><td>1</td><td>04.32%</td><td>48.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pcapplusplus/inspector-report/20230130/fuzz_report.html'>pcapplusplus</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pcl/inspector-report/20230130/fuzz_report.html'>pcl</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pcre2/inspector-report/20230130/fuzz_report.html'>pcre2</a></td><td>1</td><td>97.96%</td><td>68.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/perfetto/inspector-report/20230130/fuzz_report.html'>perfetto</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pffft/inspector-report/20230130/fuzz_report.html'>pffft</a></td><td>2</td><td>80.0%</td><td>86.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/phmap/inspector-report/20230130/fuzz_report.html'>phmap</a></td><td>1</td><td>54.98%</td><td>78.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/picotls/inspector-report/20230130/fuzz_report.html'>picotls</a></td><td>3</td><td>31.91%</td><td>21.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pidgin/inspector-report/20230130/fuzz_report.html'>pidgin</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/piex/inspector-report/20230130/fuzz_report.html'>piex</a></td><td>2</td><td>50.32%</td><td>53.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pip/inspector-report/20230130/fuzz_report.html'>pip</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pistache/inspector-report/20230130/fuzz_report.html'>pistache</a></td><td>1</td><td>02.21%</td><td>15.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pjsip/inspector-report/20230130/fuzz_report.html'>pjsip</a></td><td>5</td><td>36.17%</td><td>32.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/ply/inspector-report/20230130/fuzz_report.html'>ply</a></td><td>1</td><td>22.72%</td><td>68.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/poco/inspector-report/20230130/fuzz_report.html'>poco</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/postfix/inspector-report/20230130/fuzz_report.html'>postfix</a></td><td>2</td><td>22.87%</td><td>08.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/powerdns/inspector-report/20230130/fuzz_report.html'>powerdns</a></td><td>7</td><td>22.47%</td><td>14.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/proftpd/inspector-report/20230130/fuzz_report.html'>proftpd</a></td><td>1</td><td>19.47%</td><td>03.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/proj4/inspector-report/20230130/fuzz_report.html'>proj4</a></td><td>1</td><td>42.93%</td><td>28.9%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/proto-plus-python/inspector-report/20230130/fuzz_report.html'>proto-plus-python</a></td><td>1</td><td>00.26%</td><td>71.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/protobuf-c/inspector-report/20230130/fuzz_report.html'>protobuf-c</a></td><td>1</td><td>23.85%</td><td>26.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/proxygen/inspector-report/20230130/fuzz_report.html'>proxygen</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/psqlparse/inspector-report/20230130/fuzz_report.html'>psqlparse</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/psycopg2/inspector-report/20230130/fuzz_report.html'>psycopg2</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pugixml/inspector-report/20230130/fuzz_report.html'>pugixml</a></td><td>2</td><td>27.54%</td><td>18.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pupnp/inspector-report/20230130/fuzz_report.html'>pupnp</a></td><td>1</td><td>59.96%</td><td>46.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/py-serde/inspector-report/20230130/fuzz_report.html'>py-serde</a></td><td>1</td><td>05.51%</td><td>61.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pyasn1/inspector-report/20230130/fuzz_report.html'>pyasn1</a></td><td>1</td><td>01.82%</td><td>72.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pyasn1-modules/inspector-report/20230130/fuzz_report.html'>pyasn1-modules</a></td><td>1</td><td>00.41%</td><td>74.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pycparser/inspector-report/20230130/fuzz_report.html'>pycparser</a></td><td>1</td><td>00.95%</td><td>64.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pycryptodome/inspector-report/20230130/fuzz_report.html'>pycryptodome</a></td><td>8</td><td>74.20%</td><td>71.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pydantic/inspector-report/20230130/fuzz_report.html'>pydantic</a></td><td>2</td><td>02.46%</td><td>62.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pygments/inspector-report/20230130/fuzz_report.html'>pygments</a></td><td>2</td><td>06.38%</td><td>81.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pyjson5/inspector-report/20230130/fuzz_report.html'>pyjson5</a></td><td>1</td><td>00.45%</td><td>88.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pyjwt/inspector-report/20230130/fuzz_report.html'>pyjwt</a></td><td>1</td><td>02.29%</td><td>55.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pymysql/inspector-report/20230130/fuzz_report.html'>pymysql</a></td><td>1</td><td>54.87%</td><td>60.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pynacl/inspector-report/20230130/fuzz_report.html'>pynacl</a></td><td>2</td><td>04.72%</td><td>41.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pyodbc/inspector-report/20230130/fuzz_report.html'>pyodbc</a></td><td>1</td><td>40.0%</td><td>33.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pyparsing/inspector-report/20230130/fuzz_report.html'>pyparsing</a></td><td>1</td><td>72.30%</td><td>19.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pyrsistent/inspector-report/20230130/fuzz_report.html'>pyrsistent</a></td><td>1</td><td>11.03%</td><td>75.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pytest-py/inspector-report/20230130/fuzz_report.html'>pytest-py</a></td><td>1</td><td>01.91%</td><td>08.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/python-email-validator/inspector-report/20230130/fuzz_report.html'>python-email-validator</a></td><td>1</td><td>14.28%</td><td>56.9%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/python-fastjsonschema/inspector-report/20230130/fuzz_report.html'>python-fastjsonschema</a></td><td>1</td><td>16.2%</td><td>68.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/python-lz4/inspector-report/20230130/fuzz_report.html'>python-lz4</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/python-markdown/inspector-report/20230130/fuzz_report.html'>python-markdown</a></td><td>1</td><td>00.45%</td><td>34.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/python-phonenumbers/inspector-report/20230130/fuzz_report.html'>python-phonenumbers</a></td><td>1</td><td>00.50%</td><td>49.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/python-rsa/inspector-report/20230130/fuzz_report.html'>python-rsa</a></td><td>1</td><td>02.51%</td><td>46.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/python-tabulate/inspector-report/20230130/fuzz_report.html'>python-tabulate</a></td><td>1</td><td>03.80%</td><td>48.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pytz/inspector-report/20230130/fuzz_report.html'>pytz</a></td><td>1</td><td>46.15%</td><td>31.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pyxdg/inspector-report/20230130/fuzz_report.html'>pyxdg</a></td><td>4</td><td>44.53%</td><td>60.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/pyyaml/inspector-report/20230130/fuzz_report.html'>pyyaml</a></td><td>2</td><td>05.61%</td><td>80.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/qpdf/inspector-report/20230130/fuzz_report.html'>qpdf</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/qpid-proton/inspector-report/20230130/fuzz_report.html'>qpid-proton</a></td><td>4</td><td>27.16%</td><td>43.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/qubes-os/inspector-report/20230130/fuzz_report.html'>qubes-os</a></td><td>4</td><td>49.76%</td><td>17.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/quickjs/inspector-report/20230130/fuzz_report.html'>quickjs</a></td><td>3</td><td>61.76%</td><td>47.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/rapidjson/inspector-report/20230130/fuzz_report.html'>rapidjson</a></td><td>1</td><td>88.32%</td><td>91.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/re2/inspector-report/20230130/fuzz_report.html'>re2</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/readstat/inspector-report/20230130/fuzz_report.html'>readstat</a></td><td>11</td><td>82.58%</td><td>57.9%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/redis-py/inspector-report/20230130/fuzz_report.html'>redis-py</a></td><td>5</td><td>04.29%</td><td>48.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/relic/inspector-report/20230130/fuzz_report.html'>relic</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/requests/inspector-report/20230130/fuzz_report.html'>requests</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/resiprocate/inspector-report/20230130/fuzz_report.html'>resiprocate</a></td><td>4</td><td>08.08%</td><td>19.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/retry/inspector-report/20230130/fuzz_report.html'>retry</a></td><td>1</td><td>54.62%</td><td>49.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/rnp/inspector-report/20230130/fuzz_report.html'>rnp</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/rocksdb/inspector-report/20230130/fuzz_report.html'>rocksdb</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/s2geometry/inspector-report/20230130/fuzz_report.html'>s2geometry</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/s2opc/inspector-report/20230130/fuzz_report.html'>s2opc</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/scapy/inspector-report/20230130/fuzz_report.html'>scapy</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/scikit-learn/inspector-report/20230130/fuzz_report.html'>scikit-learn</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/selinux/inspector-report/20230130/fuzz_report.html'>selinux</a></td><td>2</td><td>73.33%</td><td>75.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/sentencepiece/inspector-report/20230130/fuzz_report.html'>sentencepiece</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/serenity/inspector-report/20230130/fuzz_report.html'>serenity</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/simd/inspector-report/20230130/fuzz_report.html'>simd</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/simdjson/inspector-report/20230130/fuzz_report.html'>simdjson</a></td><td>13</td><td>33.42%</td><td>80.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/simplejson/inspector-report/20230130/fuzz_report.html'>simplejson</a></td><td>2</td><td>36.90%</td><td>34.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/skcms/inspector-report/20230130/fuzz_report.html'>skcms</a></td><td>3</td><td>89.04%</td><td>101.%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/sleuthkit/inspector-report/20230130/fuzz_report.html'>sleuthkit</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/smart_open/inspector-report/20230130/fuzz_report.html'>smart_open</a></td><td>4</td><td>06.12%</td><td>35.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/snappy/inspector-report/20230130/fuzz_report.html'>snappy</a></td><td>2</td><td>59.63%</td><td>52.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/solidity/inspector-report/20230130/fuzz_report.html'>solidity</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/sound-open-firmware/inspector-report/20230130/fuzz_report.html'>sound-open-firmware</a></td><td>1</td><td>63.42%</td><td>35.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/soupsieve/inspector-report/20230130/fuzz_report.html'>soupsieve</a></td><td>1</td><td>62.57%</td><td>63.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/spdlog/inspector-report/20230130/fuzz_report.html'>spdlog</a></td><td>5</td><td>20.91%</td><td>53.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/speex/inspector-report/20230130/fuzz_report.html'>speex</a></td><td>2</td><td>16.55%</td><td>43.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/spice-usbredir/inspector-report/20230130/fuzz_report.html'>spice-usbredir</a></td><td>2</td><td>81.96%</td><td>56.9%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/spirv-tools/inspector-report/20230130/fuzz_report.html'>spirv-tools</a></td><td>7</td><td>34.86%</td><td>52.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/spotify-json/inspector-report/20230130/fuzz_report.html'>spotify-json</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/sql-parser/inspector-report/20230130/fuzz_report.html'>sql-parser</a></td><td>1</td><td>82.01%</td><td>52.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/sqlalchemy/inspector-report/20230130/fuzz_report.html'>sqlalchemy</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/sqlalchemy-utils/inspector-report/20230130/fuzz_report.html'>sqlalchemy-utils</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/sqlalchemy_jsonfield/inspector-report/20230130/fuzz_report.html'>sqlalchemy_jsonfield</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/sqlparse/inspector-report/20230130/fuzz_report.html'>sqlparse</a></td><td>2</td><td>10.61%</td><td>67.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/stb/inspector-report/20230130/fuzz_report.html'>stb</a></td><td>2</td><td>55.10%</td><td>37.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/strongswan/inspector-report/20230130/fuzz_report.html'>strongswan</a></td><td>5</td><td>18.04%</td><td>28.9%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/sudoers/inspector-report/20230130/fuzz_report.html'>sudoers</a></td><td>8</td><td>67.24%</td><td>62.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/systemd/inspector-report/20230130/fuzz_report.html'>systemd</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tarantool/inspector-report/20230130/fuzz_report.html'>tarantool</a></td><td>8</td><td>36.35%</td><td>14.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tcmalloc/inspector-report/20230130/fuzz_report.html'>tcmalloc</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tdengine/inspector-report/20230130/fuzz_report.html'>tdengine</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tesseract-ocr/inspector-report/20230130/fuzz_report.html'>tesseract-ocr</a></td><td>2</td><td>48.41%</td><td>31.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tidy-html5/inspector-report/20230130/fuzz_report.html'>tidy-html5</a></td><td>6</td><td>76.10%</td><td>28.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tink/inspector-report/20230130/fuzz_report.html'>tink</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tint/inspector-report/20230130/fuzz_report.html'>tint</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tinycss2/inspector-report/20230130/fuzz_report.html'>tinycss2</a></td><td>1</td><td>01.75%</td><td>55.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tinygltf/inspector-report/20230130/fuzz_report.html'>tinygltf</a></td><td>1</td><td>32.94%</td><td>39.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tinyobjloader/inspector-report/20230130/fuzz_report.html'>tinyobjloader</a></td><td>1</td><td>60.79%</td><td>26.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tinyusb/inspector-report/20230130/fuzz_report.html'>tinyusb</a></td><td>3</td><td>14.48%</td><td>24.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tinyxml2/inspector-report/20230130/fuzz_report.html'>tinyxml2</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tmux/inspector-report/20230130/fuzz_report.html'>tmux</a></td><td>1</td><td>26.86%</td><td>21.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/toml/inspector-report/20230130/fuzz_report.html'>toml</a></td><td>1</td><td>01.08%</td><td>46.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tomli/inspector-report/20230130/fuzz_report.html'>tomli</a></td><td>1</td><td>11.75%</td><td>51.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tomlkit/inspector-report/20230130/fuzz_report.html'>tomlkit</a></td><td>1</td><td>40.46%</td><td>69.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/toolbelt/inspector-report/20230130/fuzz_report.html'>toolbelt</a></td><td>1</td><td>02.83%</td><td>63.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tor/inspector-report/20230130/fuzz_report.html'>tor</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tpm2/inspector-report/20230130/fuzz_report.html'>tpm2</a></td><td>1</td><td>82.27%</td><td>45.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tpm2-tss/inspector-report/20230130/fuzz_report.html'>tpm2-tss</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tqdm/inspector-report/20230130/fuzz_report.html'>tqdm</a></td><td>1</td><td>67.27%</td><td>28.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/tremor/inspector-report/20230130/fuzz_report.html'>tremor</a></td><td>1</td><td>47.98%</td><td>59.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/unbound/inspector-report/20230130/fuzz_report.html'>unbound</a></td><td>5</td><td>11.94%</td><td>11.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/underscore/inspector-report/20230130/fuzz_report.html'>underscore</a></td><td>1</td><td>48.64%</td><td>25.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/unicorn/inspector-report/20230130/fuzz_report.html'>unicorn</a></td><td>13</td><td>00.25%</td><td>27.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/unit/inspector-report/20230130/fuzz_report.html'>unit</a></td><td>2</td><td>08.88%</td><td>07.00%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/unrar/inspector-report/20230130/fuzz_report.html'>unrar</a></td><td>1</td><td>85.19%</td><td>28.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/upb/inspector-report/20230130/fuzz_report.html'>upb</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/uriparser/inspector-report/20230130/fuzz_report.html'>uriparser</a></td><td>3</td><td>47.61%</td><td>42.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/uritemplate/inspector-report/20230130/fuzz_report.html'>uritemplate</a></td><td>1</td><td>40.0%</td><td>30.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/urllib3/inspector-report/20230130/fuzz_report.html'>urllib3</a></td><td>1</td><td>00.31%</td><td>48.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/usbguard/inspector-report/20230130/fuzz_report.html'>usbguard</a></td><td>3</td><td>07.65%</td><td>36.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/usrsctp/inspector-report/20230130/fuzz_report.html'>usrsctp</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/utf8proc/inspector-report/20230130/fuzz_report.html'>utf8proc</a></td><td>1</td><td>97.22%</td><td>84.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/util-linux/inspector-report/20230130/fuzz_report.html'>util-linux</a></td><td>4</td><td>26.07%</td><td>28.9%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/uwebsockets/inspector-report/20230130/fuzz_report.html'>uwebsockets</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/valijson/inspector-report/20230130/fuzz_report.html'>valijson</a></td><td>1</td><td>69.08%</td><td>09.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/varnish/inspector-report/20230130/fuzz_report.html'>varnish</a></td><td>1</td><td>69.37%</td><td>43.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/vlc/inspector-report/20230130/fuzz_report.html'>vlc</a></td><td>2</td><td>03.00%</td><td>12.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/vorbis/inspector-report/20230130/fuzz_report.html'>vorbis</a></td><td>1</td><td>36.36%</td><td>38.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/w3m/inspector-report/20230130/fuzz_report.html'>w3m</a></td><td>1</td><td>31.17%</td><td>34.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/wabt/inspector-report/20230130/fuzz_report.html'>wabt</a></td><td>5</td><td>35.31%</td><td>52.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/wasm3/inspector-report/20230130/fuzz_report.html'>wasm3</a></td><td>1</td><td>21.71%</td><td>28.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/wavpack/inspector-report/20230130/fuzz_report.html'>wavpack</a></td><td>1</td><td>96.69%</td><td>85.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/wazuh/inspector-report/20230130/fuzz_report.html'>wazuh</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/websocket-client/inspector-report/20230130/fuzz_report.html'>websocket-client</a></td><td>2</td><td>07.97%</td><td>55.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/websockets/inspector-report/20230130/fuzz_report.html'>websockets</a></td><td>3</td><td>08.26%</td><td>26.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/wget/inspector-report/20230130/fuzz_report.html'>wget</a></td><td>11</td><td>60.35%</td><td>15.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/wget2/inspector-report/20230130/fuzz_report.html'>wget2</a></td><td>20</td><td>55.58%</td><td>14.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/wheel/inspector-report/20230130/fuzz_report.html'>wheel</a></td><td>1</td><td>00.96%</td><td>46.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/wolfmqtt/inspector-report/20230130/fuzz_report.html'>wolfmqtt</a></td><td>1</td><td>73.83%</td><td>06.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/wolfssl/inspector-report/20230130/fuzz_report.html'>wolfssl</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/wpantund/inspector-report/20230130/fuzz_report.html'>wpantund</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/wuffs/inspector-report/20230130/fuzz_report.html'>wuffs</a></td><td>9</td><td>44.41%</td><td>53.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/wxwidgets/inspector-report/20230130/fuzz_report.html'>wxwidgets</a></td><td>1</td><td>07.47%</td><td>09.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/xerces-c/inspector-report/20230130/fuzz_report.html'>xerces-c</a></td><td>2</td><td>07.48%</td><td>24.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/xlrd/inspector-report/20230130/fuzz_report.html'>xlrd</a></td><td>1</td><td>68.50%</td><td>65.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/xmlsec/inspector-report/20230130/fuzz_report.html'>xmlsec</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/xmltodict/inspector-report/20230130/fuzz_report.html'>xmltodict</a></td><td>1</td><td>55.17%</td><td>39.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/xpdf/inspector-report/20230130/fuzz_report.html'>xpdf</a></td><td>3</td><td>23.92%</td><td>16.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/xs/inspector-report/20230130/fuzz_report.html'>xs</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/xvid/inspector-report/20230130/fuzz_report.html'>xvid</a></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/xz/inspector-report/20230130/fuzz_report.html'>xz</a></td><td>1</td><td>38.40%</td><td>79.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/yajl-ruby/inspector-report/20230130/fuzz_report.html'>yajl-ruby</a></td><td>1</td><td>74.67%</td><td>59.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/yara/inspector-report/20230130/fuzz_report.html'>yara</a></td><td>6</td><td>42.11%</td><td>48.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/yarl/inspector-report/20230130/fuzz_report.html'>yarl</a></td><td>1</td><td>00.93%</td><td>61.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/zipp/inspector-report/20230130/fuzz_report.html'>zipp</a></td><td>1</td><td>25.25%</td><td>59.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/zlib/inspector-report/20230130/fuzz_report.html'>zlib</a></td><td>9</td><td>76.52%</td><td>61.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/znc/inspector-report/20230130/fuzz_report.html'>znc</a></td><td>1</td><td>03.06%</td><td>02.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/zopfli/inspector-report/20230130/fuzz_report.html'>zopfli</a></td><td>2</td><td>94.55%</td><td>84.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/zstd/inspector-report/20230130/fuzz_report.html'>zstd</a></td><td>19</td><td>43.48%</td><td>75.0%</td></tr>
+<tr><td><a href='https://storage.googleapis.com/oss-fuzz-introspector/zydis/inspector-report/20230130/fuzz_report.html'>zydis</a></td><td>3</td><td>72.31%</td><td>66.0%</td></tr>
+</tbody>
+</table></div>
+</div>
+	<script>
+		$(document).ready( function () {
+		  // Get number of rows in this table
+		  var rowCount = $('#mainTable tr').length;
+		  var sortByColumn = $('#mainTable').data('sort-by-column');
+		  var sortOrder = $('#mainTable').data('sort-order');
+		  
+
+		  var bPaginate;
+		  var bLengthChange;
+		  var bInfo;
+		  var bFilter;
+
+		  /*if(rowCount<6) {
+		    bFilter = false;
+		  } else {
+		    bFilter = true;
+		  }*/
+		    bFilter = true;   
+		    bPaginate = true;
+		    bLengthChange = true;
+		    bInfo = true;
+
+		  var tableConfig = {'bPaginate': bPaginate,
+		                      'bLengthChange': bLengthChange,
+		                      'bInfo': bInfo,
+		                      'bFilter': bFilter,
+		                      'pageLength': 1000,
+		                      'autoWidth': false,
+		                      /*dom:            "Bfrtip",*/
+		                      paging: true, 
+		                      scrollCollapse: true,
+		                      buttons:        [ {
+		                        extend: 'colvis',
+		                        text: "Columns"
+		                        },
+		                        {
+		                          extend: "pageLength",
+		                          text: "Rows"
+		                        }],
+		                      fixedColumns:   {
+		                          left: 2
+		                      }
+		                    }
+		  var language = {"lengthMenu": "_MENU_ per page",
+		                  "searchPlaceholder": "Search table",
+		                  "search": "_INPUT_"}
+		  tableConfig.language = language;
+		    $('#mainTable').DataTable(tableConfig);
+} );
+</script>
+</body>
+</html>
